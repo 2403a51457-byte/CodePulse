@@ -1,0 +1,38 @@
+CODEPULSE - WINDOWS QUICK START
+
+1. Install Python 3.10+ and Git for Windows.
+2. Extract the ZIP file.
+3. In VS Code, open the INNER CodePulse folder (the one containing app.py).
+4. Open Terminal > New Terminal and run these commands one at a time:
+
+   py -m venv .venv
+   .venv\Scripts\Activate.ps1
+   python -m pip install --upgrade pip
+   pip install -r requirements.txt
+   python app.py
+
+5. Open http://127.0.0.1:5000
+
+FIRST LOGIN
+   Username: admin
+   Password: ChangeThisPassword123!
+
+Change the default password before sharing the app. See README.md for environment-variable setup.
+
+CONNECT A REPOSITORY
+- Click New project.
+- Enter a project name and a public GitHub HTTPS URL.
+- Save, open Projects and click Analyze.
+- Review health score, Python files scanned, defected files, High/Medium/Low technical debt and findings.
+- Export CSV or JSON from the analysis page.
+
+TROUBLESHOOTING
+- If 'py' is not recognized, install Python and enable Add Python to PATH.
+- If 'git' is not recognized, install Git for Windows and restart VS Code.
+- If no Python files are found, verify that the GitHub repository is public and contains .py files on its default branch.
+- Stop the server with Ctrl+C.
+
+SECURITY
+- Do not commit passwords, API keys, tokens, instance/, or .venv/.
+- CodePulse statically parses Python files and does not execute repository code.
+- Health scores are heuristic indicators, not security certification.

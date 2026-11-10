@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1220">
+<title>{% block title %}CodePulse{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"></head>
+<body><aside class="sidebar"><a class="brand" href="{{ url_for('dashboard') }}"><span class="brand-mark">⌁</span><span>CodePulse</span><small>CODE INTELLIGENCE</small></a><div class="nav-label">WORKSPACE</div><nav>
+<a href="{{ url_for('dashboard') }}"><span>▦</span> Overview</a><a href="{{ url_for('projects') }}"><span>▣</span> Projects</a><a href="{{ url_for('technical_debt') }}"><span>⌁</span> Technical debt</a><a href="{{ url_for('issues') }}"><span>☷</span> Issues</a></nav>
+<div class="sidebar-bottom"><div class="sidebar-status"><i></i><span>Local analysis engine ready</span></div><form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="logout-btn">↪ Sign out</button></form><div class="side-foot">SOFTWARE HEALTH<br>&amp; TECHNICAL DEBT</div></div></aside>
+<main class="main"><header><div><div class="eyebrow">SOFTWARE INTELLIGENCE PLATFORM</div><h1>{% block heading %}Overview{% endblock %}</h1></div><a class="button" href="{{ url_for('create_project') }}">＋ New project</a></header>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}<footer>CodePulse · {{ current_year }} · Static analysis insights · Scores are heuristic, not a security certification</footer></main>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script></body></html>

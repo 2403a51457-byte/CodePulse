@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}{{ 'Edit' if project else 'New' }} project · CodePulse{% endblock %}{% block heading %}{{ 'Edit project' if project else 'Create a project' }}{% endblock %}
+{% block content %}<section class="panel form-panel"><div class="eyebrow">REPOSITORY CONFIGURATION</div><h2>Project details</h2><p>Connect a public GitHub repository to enable Python source-code analysis.</p><form method="post" class="form"><input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<label>Project name<input name="name" required maxlength="120" value="{{ project.name if project else '' }}" placeholder="e.g. CodePulse"></label>
+<label>Description<textarea name="description" rows="3" maxlength="2000" placeholder="Describe the project">{{ project.description if project else '' }}</textarea></label>
+<label>Programming language<input name="language" maxlength="40" value="{{ project.language if project else 'Python' }}" placeholder="Python"></label>
+<label>GitHub repository URL<input name="repo_url" type="url" value="{{ project.repo_url if project else '' }}" placeholder="https://github.com/owner/repository"><small>Public GitHub HTTPS repositories are supported in this version.</small></label>
+<div class="form-actions"><a class="small-button" href="{{ url_for('projects') }}">Cancel</a><button class="button">Save project</button></div></form></section>{% endblock %}
